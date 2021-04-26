@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package edgify;
+option go_package="edgifypb";
+
+message CreateAnalyticsEventRequest {
+  string name = 1;
+}
+
+message CreateAnalyticsEventResponse {}
+
+service AnalyticsService{
+  rpc CreateEvent(CreateAnalyticsEventRequest) returns(CreateAnalyticsEventResponse) {}
+  
+}

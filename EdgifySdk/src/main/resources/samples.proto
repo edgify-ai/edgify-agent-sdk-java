@@ -1,0 +1,69 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+package edgify;
+option go_package="edgifypb";
+
+message GetSamplesRequest {
+}
+
+message GetSamplesResponse {
+  repeated DataSample samples = 1;
+}
+
+message UpdateSampleRequest {
+  DataSample sample =1;
+}
+
+message UpdateSampleResponse {
+  DataSample sample =1;
+}
+
+message AddSampleRequest {
+  DataSample sample =1;
+  bytes file = 2;
+}
+
+message AddSampleResponse {
+  DataSample sample =1;
+}
+
+message DataSample {
+  string uuid = 1;
+  string path = 2;
+  string label = 3;
+  uint64 size  = 4;
+  bool opened = 5;
+  string dataset_type = 6;
+  google.protobuf.Timestamp created_at  = 7;
+  string group_id = 8;
+}
+
+message SyncRequest {}
+message SyncResponse {}
+
+message DeleteAllSamplesRequest {}
+message DeleteAllSamplesResponse {}
+
+message DeleteSamplesRequest {
+  repeated string uuids = 1;
+}
+
+message DeleteSampleResponse {}
+
+message DeleteSampleRequest {
+  string uuid = 1;
+}
+
+message DeleteSamplesResponse {}
+
+service SamplesService{
+  rpc GetSamples(GetSamplesRequest) returns(GetSamplesResponse) {}
+  rpc AddSample(AddSampleRequest) returns(AddSampleResponse) {}
+  rpc UpdateSample(UpdateSampleRequest) returns(UpdateSampleResponse) {}
+  rpc Sync(SyncRequest) returns(SyncResponse) {}
+  rpc DeleteAllSamples(DeleteAllSamplesRequest) returns(DeleteAllSamplesResponse) {}
+  rpc DeleteSamples(DeleteSamplesRequest) returns(DeleteSamplesResponse) {}
+  rpc DeleteSample(DeleteSampleRequest) returns(DeleteSampleResponse) {}
+}
