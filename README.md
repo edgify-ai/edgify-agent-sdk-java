@@ -13,7 +13,7 @@ Sdk API:
 **The sdk contains these API calls:**
 * Connect - connects to the GRPC channel
 * GetPrediction - captures an image via the camera and run a prediction (returns a prediction object)
-* CreateGroundTruth - save the sample (the response of GetPrediction) and attach a label and source to it
+* CreateGroundTruth - saves the sample (the response of GetPrediction) and attaches a label and it's ground truth source
 * DeleteSample - deletes a sample based on it's Uuid (originally provided in the response of GetPrediction)
 * StartCustomerTransaction - used to inform Edgify upon customer starting a session
 * EndCustomerTransaction - used to inform Edgify upon customer ending a session
